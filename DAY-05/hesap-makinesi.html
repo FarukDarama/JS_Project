@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hesap Makinesi</title>
+  <style>
+    /* Basit bir stil */
+    input[type="number"] {
+      width: 100px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hesap Makinesi</h1>
+  
+  <input type="number" id="sayi1">
+  
+  <select id="operator">
+    <option value="+">Toplama (+)</option>
+    <option value="-">Çıkarma (-)</option>
+    <option value="*">Çarpma (*)</option>
+    <option value="/">Bölme (/)</option>
+  </select>
+  
+  <input type="number" id="sayi2">
+  
+  <button onclick="hesapla()">Hesapla</button>
+  
+  <p>Sonuç: <span id="sonuc"></span></p>
+
+  <script>
+    function hesapla() {
+      const sayi1 = parseFloat(document.getElementById('sayi1').value);
+      const sayi2 = parseFloat(document.getElementById('sayi2').value);
+      const operator = document.getElementById('operator').value;
+      let sonuc = 0;
+
+      switch (operator) {
+        case '+':
+          sonuc = sayi1 + sayi2;
+          break;
+        case '-':
+          sonuc = sayi1 - sayi2;
+          break;
+        case '*':
+          sonuc = sayi1 * sayi2;
+          break;
+        case '/':
+          if (sayi2 !== 0) {
+            sonuc = sayi1 / sayi2;
+          } else {
+            sonuc = 'Sıfıra bölme hatası!';
+          }
+          break;
+        default:
+          sonuc = 'Geçersiz işlem!';
+      }
+
+      document.getElementById('sonuc').innerText = sonuc;
+    }
+  </script>
+
+</body>
+</html>
