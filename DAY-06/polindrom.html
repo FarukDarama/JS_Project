@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polindrom</title>
+</head>
+
+<body>
+
+    <input name="searchTxt" type="text" id="searchTxt" placeholder="Sayi Girin">
+    <button onclick="isPolindrome()">Click</button>
+    <h3 id="result"></h3>
+
+    <script>
+
+
+        function isPolindrome() {
+             
+            const txtNumber = document.querySelector("#searchTxt");
+            const num =txtNumber.value;
+            console.log(num,typeof(num));
+            const rNum =String(num).split("").reverse().join("");
+
+
+            if (num == rNum) {
+                document.querySelector("#result").innerHTML = " Girilen sayi Polindromdur";
+            }
+            else {
+                document.querySelector("#result").innerHTML = " Girilen sayi Polindrom degildir";
+            }
+
+
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
