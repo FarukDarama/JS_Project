@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scope</title>
+  <style>
+    .hidden{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="btnStart" onclick="start()">Start</button>
+
+  <div id="gamePanel" class="hidden">
+    <input type="number" id="txtNum" placeholder="Type a number between 1-100">
+    <button onclick="predict()">Predict</button>
+  </div>
+  
+  <h4 id="lblResult"></h4>
+
+  <script>
+    const txtNum =document.querySelector("#txtNum");
+    const lblResult =document.querySelector("#lblResult");
+    const gamePanel =document.querySelector("#gamePanel");
+    const btnStart =document.querySelector("#btnStart");
+    let randomNumber;
+
+    const start = () =>{
+      btnStart.classList.add("hidden");
+      gamePanel.classList.remove("hidden");
+      blResult.innerHTML = "";
+      randomNumber = generateRandomNumber(1,100)
+      
+    }
+
+    const predict = () =>{
+
+      const predictedNumber =Number(txtNum.value);
+      blResult.innerHTML = "";
+      
+
+      if(!predictedNumber || predictedNumber<=0 || predictedNumber>100){
+            lblResult.innerHTML= "Type a number between 1-100";
+            return;
+      }
+
+      if(predictedNumber === randomNumber ){
+        lblResult.innerHTML= "🏆🏆🏆 You won! 🏆🏆🏆";
+      } else if(predictedNumber>randomNumber){
+        lblResult.innerHTML = "Decrase the number"
+      }else{
+        lblResult.innerHTML = "Raise the number";
+      }
+
+     txtNum.value ="";
+     txtNum.focus();
+
+    }
+
+     const generateRandomNumber =(min,max) => Math.floor(Math.random()*(max - min +1) + min);
+
+  </script>
+
+</body>
+</html>
